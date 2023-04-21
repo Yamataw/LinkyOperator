@@ -1,0 +1,24 @@
+<app-nav-bar></app-nav-bar>
+<div class="bg-base-300 max-w-3xl ">
+  <ul class="pt-14 mb">
+    <app-map  *ngIf="gps.length != 0" [gps]="gps" ></app-map>
+    <li *ngFor="let item of items">
+
+      <div class="card card-side bg-base-100 my-2.5 mt-6 ml-4  hover:bg-info/30 cursor-pointer "(click)="child.doSomething(item.latitude,item.longitude)" >
+        <div class="card-body">
+          <p>{{item.prenom }} {{ item.nom | uppercase}}</p>
+          <p>{{item.adresse}}</p>
+
+        </div>
+
+        <figure class="w-2/3">
+          <app-chart [data]="item.data"></app-chart>
+
+        </figure>
+      </div>
+    </li>
+  </ul>
+
+</div>
+
+
