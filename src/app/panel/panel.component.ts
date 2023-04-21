@@ -41,7 +41,7 @@ export class PanelComponent implements OnInit {
         adresse : client.adresse,
         client: client.id,
         prenom: client.prenom,
-        nom: client.nom,
+        nom: client.nom.split('<')[0],
         latitude : client.coordonnees.latitude,
         longitude : client.coordonnees.longitude,
         data: [

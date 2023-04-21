@@ -4,7 +4,7 @@
     <app-map  *ngIf="gps.length != 0" [gps]="gps" ></app-map>
     <li *ngFor="let item of items">
 
-      <div class="card card-side bg-base-100 my-2.5 mt-6 ml-4  hover:bg-info/30 cursor-pointer "(click)="child.doSomething(item.latitude,item.longitude)" >
+      <div class="card card-side bg-base-100 my-2.5 mt-6 ml-4  hover:bg-info/30 cursor-pointer "(click)="child.doSomething(item.latitude,item.longitude,item.client-1)" >
         <div class="card-body">
           <p>{{item.prenom }} {{ item.nom | uppercase}}</p>
           <p>{{item.adresse}}</p>

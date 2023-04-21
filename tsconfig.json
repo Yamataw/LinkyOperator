@@ -25,6 +25,10 @@
       "dom"
     ]
   },
+  "include": [
+    "src/**/*.ts",
+    "node_modules/@types/jasmine/index.d.ts"
+  ],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,

@@ -11,6 +11,7 @@ import type = _default.defaults.animations.numbers.type;
 export class MapComponent implements AfterViewInit {
   @Output() map!: L.Map;
   @Input() gps : Array<{name: string;adresse : string; latitude: number; longitude: number }>;
+  public marker_array!:Array<any>
   private initMap(): void {
     this.map = L.map('map', {
       center: [ 48.117266  ,  -1.6777926 ],
@@ -22,10 +23,12 @@ export class MapComponent implements AfterViewInit {
       maxZoom: 18,
       minZoom: 3,
     });
-    this.gps.forEach((element) =>{
+    this.marker_array = [];
+    this.gps.forEach((element,index) =>{
       var marker = L.marker([element.latitude, element.longitude],).addTo(this.map!);
       marker.bindPopup(`<b>${element.name}</b><br>
                                    ${element.adresse}`,).openPopup();
+      this.marker_array[index] = marker;
     })
 
     tiles.addTo(this.map);
@@ -33,8 +36,9 @@ export class MapComponent implements AfterViewInit {
 
   }
 
-  doSomething(lat: number ,long: number ) {
+  doSomething(lat: number ,long: number,index:number) {
     this.map.flyTo([lat, long], 18)
+    this.marker_array[index].fireEvent('click');
   }
 
 
